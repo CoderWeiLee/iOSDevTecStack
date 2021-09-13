@@ -15,7 +15,8 @@ iOS开发者需要具备的技术栈各种知识点收集汇总整理，不断�
 
 #### 实现可选协议的方式
 - 通过`Extension`提供协议中方法的默认实现
-- ```objc
+- 通过以下代码
+```objc
    @objc protocol Runnable {
      @objc optional func run1
      func run2
