@@ -4,6 +4,30 @@ iOS开发者需要具备的技术栈各种知识点收集汇总整理，不断�
 ## Swift
 #### dynamic
 - 被`@objc dynamic` 修饰的内容会具有动态性，比如调用方法会走`runtime`那一套流程
+```objc
+  class Dog: NSObject {
+    @objc dynamic func test1() {}
+    func test2() {}
+  }
+  var d = Dog()
+  d.test1()
+  d.test2()
+```
+
+```objc
+  movq 0x8fb4(%rip), %rsi       ; “test1”
+  movq -0x60(%rip), %rax
+  movq %rax, %rdi
+  callq  0x100007c5e            ; symbol stub for: objc_msgSend
+```
+
+```objc
+  movq -0x70(%rbp), %rcx
+  movq (%rcx), %rdx
+  andq (%rax), %rdx
+  movq %rcx, %r13
+  callq *0x50(%rdx)   //test2通过虚表方式调用
+```
 
 #### 实现只能被类遵守的协议
 ```objc
