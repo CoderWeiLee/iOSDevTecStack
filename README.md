@@ -182,6 +182,23 @@ class aViewController: UIViewController {
   var num3 = num1.flatMap { Optional.some($0 * 2)}
 ```
 
+```objc
+  var num1: Int? = 10
+  var num2 = (num1 != nil) ? (num1! + 10) : nil
+  var num3 = num1.map { $0 + 10}
+//num2,num3是等价的
+```
+
+```objc
+  var fmt = DateFormatter()
+  fmt.dateFormat = "yyyy-MM-dd"
+  var str: String? = "2021-09-15"
+  //old
+  var date1 = str != nil ? fmt.date(from: str!) : nil
+  //new
+  var date2 = str.flatMap(fmt.date)
+```
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
