@@ -29,6 +29,31 @@ iOS开发者需要具备的技术栈各种知识点收集汇总整理，不断�
   callq *0x50(%rdx)   //test2通过虚表方式调用
 ```
 
+#### Swift支持KVC\KVO的条件
+- 属性所在的类、监听器最终继承自`NSObject`
+- 用`@objc dynamic`修饰对应的属性
+
+#### static
+- 修饰的属性变量是静态的，只会初始化一次
+```objc
+  class ViewController: UIViewController {
+    static var age: Int = {return 0}
+  }
+```
+> 类型属性`age`本质上就是全局变量，只会初始化一次，默认是`lazy`的。当`ViewController`被销毁了，再次进来`ViewController`重新创建的时候，`age`也不会再次创建，因为它是全局变量。所以可以用来实现类似`dispatch_onece`的效果，即整个程序运行过程中只执行一次的代码
+
+#### @discardableResult
+```objc
+  @discardableResult
+  func test() -> DispatchWorkItem {
+    return DispatchWorkItem {
+        print(1)
+    }
+  }
+  test()
+```
+> 可丢弃的结果
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
