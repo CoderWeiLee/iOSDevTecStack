@@ -54,6 +54,28 @@ iOS开发者需要具备的技术栈各种知识点收集汇总整理，不断�
 ```
 > 可丢弃的结果
 
+#### 实现`dispatch_onece`的方式
+```objc
+  fileprivate var initTask: Void = {
+   print("init--------")
+}()
+
+class aViewController: UIViewController {
+//    static var initTask: Void = {
+//       print("getAge")
+//    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        let _ = Self.initTask
+//        let _ = Self.initTask
+        let _ = initTask
+        let _ = initTask
+    }
+}
+```
+> `bt`查看调用栈会发现底层都调用了`dispatch_onece`方法
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
