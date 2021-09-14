@@ -76,6 +76,29 @@ class aViewController: UIViewController {
 ```
 > `bt`查看调用栈会发现底层都调用了`dispatch_onece`方法
 
+#### Swift加锁
+```objc
+  public struct Cache {
+    private static var data = [String: Any]()
+//    private static var lock = DispatchSemaphore(value: 1) // 1代表同时只能有1个线程访问
+    private static var lock = NSLock()
+//    private static var lock = NSRecursiveLock() //递归锁
+    public static func get(_ key: String) -> Any? {
+        data[key]
+    }
+    
+    public static func set(_ key: String, _ value: Any) {
+//        lock.wait()
+//        defer {lock.signal()}
+//        data[key] = value
+        lock.lock()
+        defer {lock.unlock()} //递归可能引发死锁
+        data[key] = value
+        
+    }
+}
+```
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
