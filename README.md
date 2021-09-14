@@ -130,6 +130,39 @@ class aViewController: UIViewController {
   print(arr.reduce([]) {$1 % 2 == 0 ? $0 + [$1] : $0})
 ```
 
+#### lazy的map
+- 普通的map
+```objc
+  let arr = [1,2,3]
+  let result = arr.map {
+    (i: Int) -> Int in
+    print(“mapping \(i)”)
+    return i * 2
+  }
+  print(“begin----”)
+  print(“mapped”,result[0])
+  print(“mapped”,result[1])
+  print(“mapped”,result[2])
+  print(“end----”)
+```
+>  普通的`map`会在begin开始之前完成所有映射，造成性能浪费
+
+- lazy的map
+```objc
+  let arr = [1,2,3]
+  let result = arr.lazy.map { //arr是sequence  arr.lazy是lazySequence
+    (i: Int) -> Int in
+    print(“mapping \(i)”)
+    return i * 2
+  }
+  print(“begin----”)
+  print(“mapped”,result[0])
+  print(“mapped”,result[1])
+  print(“mapped”,result[2])
+  print(“end----”)
+```
+> 使用了`lazy`只有在用到一个值时才会去映射
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
