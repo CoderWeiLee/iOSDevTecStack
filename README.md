@@ -99,6 +99,37 @@ class aViewController: UIViewController {
 }
 ```
 
+#### Array的常用操作
+- reduce
+```objc
+  var arr = [1,2,3]
+  arr.reduce(0) {$0 + $1}
+  arr.reduce(0, +) 
+```
+
+- flatMap
+```objc
+  arr.flatMap {
+    return Array(repeating: $0, count: $0) //[1,2,2,3,3,3]
+  }
+```
+
+- compactMap
+```objc
+  ["jack", "2", "3", "nick"].compactMap {Int($0)} // [2,3]
+```
+> 如果采用`map {Int($0)}` 返回的结果是`[nil,Optional(2),Optional(3),nil]`
+
+- 采用reduce来实现map、filter的功能
+```objc
+  var arr = [1,2,3]
+  print(arr.map {$0 * 2})
+  print(arr.reduce([], {$0 + [$1 * 2]}))
+
+  print(arr.filter {$0 % 2 == 0})
+  print(arr.reduce([]) {$1 % 2 == 0 ? $0 + [$1] : $0})
+```
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
