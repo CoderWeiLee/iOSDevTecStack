@@ -163,6 +163,25 @@ class aViewController: UIViewController {
 ```
 > 使用了`lazy`只有在用到一个值时才会去映射
 
+#### Optional的map和flatMap
+```objc
+  var num1: Int? = 10
+  //Optional(20)
+  var num2 = num1.map { $0 * 2 }
+
+  var num3: Int? = nil
+  //nil
+  var num4 = num3.map { $0 * 2 }
+```
+
+```objc
+  var num1: Int? = 10
+  //Optional(Optional(10))
+  var num2 = num1.map { Optional.some($0 * 2)}
+  //Optional(20)
+  var num3 = num1.flatMap { Optional.some($0 * 2)}
+```
+
 #### 实现只能被类遵守的协议
 ```objc
   protocol Runnable: Anyobject {}
