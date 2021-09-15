@@ -271,6 +271,22 @@ ssh -p 188 root@171.17.12.80 //step 1
   sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/  Contents/Resources/kickstart -deactivate -configure -access -off
 ```
 
+#### ubuntu和centos安装wget
+- ubuntu下安装
+```objc
+  sudo apt-get update  
+  sudo apt-get install wget  
+  wget --version
+```
+
+- centos下安装
+```objc
+  yum install wget
+```
+     
+     
+   
+
 ## Link 
 - [Markdown指南中文版](https://www.markdown.xyz/basic-syntax/)
 
