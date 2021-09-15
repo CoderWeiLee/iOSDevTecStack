@@ -228,6 +228,49 @@ ssh -p 188 root@171.17.12.80 //step 1
 ```
 > -p 188指定端口号
 
+#### Mac终端命令远程开启屏幕共享进行远程控制
+> 远程被控制的那台机器需要开启允许远程登录。系统偏好设置 -> 共享 -> 远程登录（勾选上）-> 允许远程用户对磁盘进行完全访问。开启后，你会看到`若要远程登录这台电脑，请键入“ssh 你的用户名@192.168.xx.xx”。 `
+- 在自己的机器上，`ssh`登录远程主机。输入上面的命令回车然后再输入你远程主机的开机密码。
+```objc
+  ssh liwei@192.168.xx.xx
+```
+- 远程登录成功后。会看到远程主机的名字出现。
+```objc
+  liwei@liweideiMac
+```
+- 执行开启命令。执行的命令其实就是修改一个系统屏幕分享的配置文件。具体方式如下：
+```objc
+  sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -clientopts -setvnclegacy -vnclegacy yes -clientopts -setvncpw -vncpw 1234 -restart -agent -privs -all
+```
+- 设置完之后会看到以下输出:
+```objc
+  Starting...
+  Warning: macos 10.14 and later only allows control if Screen            Sharing is enabled through System Preferences.
+   Activated Remote Management.
+  Stopped ARD Agent.
+  liwei: Set user remote control privileges.
+  liwei: Set user remote access.
+  Set the client options.
+  Done.
+```
+- 开始远程控制。Mac 自带支持VNC，可以直接用系统浏览器Safari也可以使用支持VNC的第三方软件来进行控制。使用Safari控制的方式为：
+     - 打开Safari
+     - 在地址栏里输入vnc+远程主机地址
+     ```objc
+       vnc://10.5.234.xx
+     ```
+     - 回车后输入远程地址的用户名和密码
+     - 回车进行连接
+   > 到这一步应该已经可以看到远程主机的屏幕了。下面的是为所有用户开启vnc和关闭的命令
+- 有时候可能会遇到开启vnc成功了，但是登陆不了的情况，可能是由于没有为所有用户开启的原因，可以尝试以下命令：
+```objc
+  sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers
+``` 
+- 使用以下命令关闭共享：
+```objc
+  sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/  Contents/Resources/kickstart -deactivate -configure -access -off
+```
+
 ## Link 
 - [Markdown指南中文版](https://www.markdown.xyz/basic-syntax/)
 
