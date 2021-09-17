@@ -218,7 +218,14 @@ class aViewController: UIViewController {
 ```
 > 其中，定义的run1就是可选的方法
 
+#### 函数的合成
+```objc
+  //函数合成
+  prefix func ~<A, B, C, D>(_ fn: @escaping (A, B, C) -> D) -> (C) -> (B) -> (A) -> D  {
+    {c in {b in {a in fn(a, b, c)}}}
+  }
 
+```
 
 ## Shell
 #### ssh登录远程服务器
