@@ -244,6 +244,7 @@ class Person {}
 
 extension Person {
     var mj: MJ<Person> { MJ(self) }
+    static var mj: MJ<String>.Type { MJ<String>.self }
 }
 
 extension MJ where Base == String {
@@ -253,6 +254,10 @@ extension MJ where Base == String {
             count += 1
         }
         return count
+    }
+    
+      static func test() {
+        
     }
 }
 
@@ -265,6 +270,7 @@ extension MJ where Base: Person {
 var person = Person()
 person.mj.run()
 print("123ccc".mj.numberCount)
+String.mj.test()
 ```
 
 ## Shell
