@@ -227,6 +227,16 @@ class aViewController: UIViewController {
 
 ```
 
+#### 优雅的前缀
+```objc
+  struct MJ<Base> {
+    var base: Base
+    init(_ base: Base) {
+        self.base = base
+    }
+  }
+```
+
 ## Shell
 #### ssh登录远程服务器
 ```objc
