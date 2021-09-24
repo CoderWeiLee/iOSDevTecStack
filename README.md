@@ -229,24 +229,35 @@ class aViewController: UIViewController {
 
 #### 优雅的前缀
 ```objc
-  struct MJ<Base> {
+  import Foundation
+//前缀类型
+struct MJ<Base> {
     var base: Base
     init(_ base: Base) {
         self.base = base
     }
-  }
-  
-  extension String {
-    var mj: MJ<String> { MJ(self) }
 }
+
+//利用协议扩展前缀属性
+protocol MJCompatible {}
+extension MJCompatible {
+    var mj: MJ<Self> {
+        set {}
+        get { MJ(self) }
+    }
+    static var mj: MJ<Self>.Type {
+        set {}
+        get { MJ<Self>.self }
+    }
+}
+//给字符串拓展功能
+//让String拥有mj前缀属性
+extension String: MJCompatible {}
 
 class Person {}
 
-extension Person {
-    var mj: MJ<Person> { MJ(self) }
-    static var mj: MJ<String>.Type { MJ<String>.self }
-}
-
+extension Person: MJCompatible {}
+//给String.mj  String().mj前缀拓展功能
 extension MJ where Base == String {
     var numberCount: Int {
         var count = 0
@@ -256,7 +267,10 @@ extension MJ where Base == String {
         return count
     }
     
-      static func test() {
+    static func test() {
+        
+    }
+    mutating func run() {
         
     }
 }
@@ -271,6 +285,9 @@ var person = Person()
 person.mj.run()
 print("123ccc".mj.numberCount)
 String.mj.test()
+var abc = "123"
+abc.mj.run()
+
 ```
 
 ## Shell
