@@ -235,6 +235,36 @@ class aViewController: UIViewController {
         self.base = base
     }
   }
+  
+  extension String {
+    var mj: MJ<String> { MJ(self) }
+}
+
+class Person {}
+
+extension Person {
+    var mj: MJ<Person> { MJ(self) }
+}
+
+extension MJ where Base == String {
+    var numberCount: Int {
+        var count = 0
+        for c in base where ("0"..."9").contains(c) {
+            count += 1
+        }
+        return count
+    }
+}
+
+extension MJ where Base: Person {
+    func run() {
+        
+    }
+}
+
+var person = Person()
+person.mj.run()
+print("123ccc".mj.numberCount)
 ```
 
 ## Shell
