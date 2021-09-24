@@ -290,6 +290,15 @@ ssh -p 188 root@171.17.12.80 //step 1
 ```objc
   yum install wget
 ```
+
+#### MacOS下查看jdk版本
+```objc
+  java -version
+  //查看不同jdk安装位置
+  /usr/libexec/java_home -V
+```
+
+
      
      
    
