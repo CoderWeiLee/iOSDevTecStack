@@ -258,10 +258,11 @@ class Person {}
 
 extension Person: MJCompatible {}
 //给String.mj  String().mj前缀拓展功能
-extension MJ where Base == String {
+extension MJ where Base: ExpressibleByStringLiteral {
     var numberCount: Int {
         var count = 0
-        for c in base where ("0"..."9").contains(c) {
+        let string = base as! String
+        for c in string where ("0"..."9").contains(c) {
             count += 1
         }
         return count
