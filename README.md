@@ -98,6 +98,14 @@ class aViewController: UIViewController {
     }
 }
 ```
+#### 查看`View`的递归子控件
+```objc
+  (lldb) po [self.view.window recursiveDescription]
+<UIWindow: 0x12c709ec0; frame = (0 0; 390 844); gestureRecognizers = <NSArray: 0x600003d2c1e0>; layer = <UIWindowLayer: 0x600003d22910>>
+   | <UITransitionView: 0x12c506760; frame = (0 0; 390 844); autoresize = W+H; layer = <CALayer: 0x600003373960>>
+   |    | <UIDropShadowView: 0x12c704e50; frame = (0 0; 390 844); autoresize = W+H; layer = <CALayer: 0x600003378b00>>
+   |    |    | <UIView: 0x12c506e60; frame = (0 0; 390 844); autoresize = W+H; layer = <CALayer: 0x600003373440>>
+```
 
 #### Array的常用操作
 - reduce
