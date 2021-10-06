@@ -370,7 +370,14 @@ ssh -p 188 root@171.17.12.80 //step 1
   /usr/libexec/java_home -V
 ```
 
-
+#### 逆向
+- 覆盖iPhone的RevealServer文件路径
+```objc
+  /Library/Frameworks/RevealServer.framework
+  执行以下命令
+  scp /Applications/Reveal.app/Contents/SharedSupport/iOS-   Libraries/RevealServer.framework/RevealServer root@192.168.1.12:/Library/Frameworks/RevealServer.framework
+RevealServer                                  100% 9100KB  10.3MB/s   00:00
+```
      
      
    
