@@ -378,6 +378,11 @@ ssh -p 188 root@171.17.12.80 //step 1
   scp /Applications/Reveal.app/Contents/SharedSupport/iOS-   Libraries/RevealServer.framework/RevealServer root@192.168.1.12:/Library/Frameworks/RevealServer.framework
 RevealServer                                  100% 9100KB  10.3MB/s   00:00
 ```
+
+#### UIKit Mach-O文件的路径
+```objc
+  '/System/Library/Frameworks/UIKit.framework/UIKit'
+```
      
      
    
