@@ -383,6 +383,11 @@ RevealServer                                  100% 9100KB  10.3MB/s   00:00
 ```objc
   '/System/Library/Frameworks/UIKit.framework/UIKit'
 ```
+
+#### 从iPhone拷贝UIKit.framework到电脑桌面
+```objc
+  scp -r root@192.168.1.12:/System/Library/Frameworks/   UIKit.framework ~/Desktop
+```
      
      
    
