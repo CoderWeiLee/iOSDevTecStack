@@ -377,6 +377,11 @@ ssh -p 188 root@171.17.12.80 //step 1
   执行以下命令
   scp /Applications/Reveal.app/Contents/SharedSupport/iOS-   Libraries/RevealServer.framework/RevealServer root@192.168.1.12:/Library/Frameworks/RevealServer.framework
 RevealServer                                  100% 9100KB  10.3MB/s   00:00
+
+scp -P 10010 root@localhost:/System/Library/CoreServices/SpringBoard.app/SpringBoard ~/Desktop
+
+SpringBoard                                100%   12MB  41.4MB/s   00:00
+
 ```
 
 #### UIKit Mach-O文件的路径
