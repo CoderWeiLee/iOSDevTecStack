@@ -384,6 +384,12 @@ SpringBoard                                100%   12MB  41.4MB/s   00:00
 
 ```
 
+#### 真机上的Bundle路径
+```objc
+  /var/containers/Bundle/Application/CCECF7C8-4C06-44D9-9EB8-B8C85D518536/Weathe
+  可以通过[NSBundle mainBundle].bundlePath 来查看
+```
+
 #### UIKit Mach-O文件的路径
 ```objc
   '/System/Library/Frameworks/UIKit.framework/UIKit'
@@ -394,6 +400,16 @@ SpringBoard                                100%   12MB  41.4MB/s   00:00
   scp -r root@192.168.1.12:/System/Library/Frameworks/   UIKit.framework ~/Desktop
 ```
      
+#### dysm定位crash
+```objc
+  链接symbollicatecrash到/usr/local/bin/中，就可以直接使用sybollicatecrash命令
+  ln -s /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash /usr/local/bin/symbolicatecrash
+  
+  设置xcode DEVELOPER_DIR  命令行直接敲
+  export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+  然后在这几个文件的目录下执行命令：symbolicatecrash xx.crash xx.app.dSYM > new.crash
+  
+```
      
    
 
