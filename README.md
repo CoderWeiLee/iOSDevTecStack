@@ -384,6 +384,14 @@ SpringBoard                                100%   12MB  41.4MB/s   00:00
 
 ```
 
+- 生成`.c`文件的`.s`汇编文件
+```objc
+xcrun -sdk iphoneos clang -arch arm64 -S xx.c -o xx.s
+后面的-o xx.s 不写也会自动生成同名的.s文件
+```
+
+
+
 #### 真机上的Bundle路径
 ```objc
   /var/containers/Bundle/Application/CCECF7C8-4C06-44D9-9EB8-B8C85D518536/Weathe
