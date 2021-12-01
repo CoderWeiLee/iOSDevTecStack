@@ -390,6 +390,11 @@ xcrun -sdk iphoneos clang -arch arm64 -S xx.c -o xx.s
 后面的-o xx.s 不写也会自动生成同名的.s文件
 ```
 
+- 生成`.c`文件的`.cpp`C++文件
+```objc
+xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m
+```
+
 
 
 #### 真机上的Bundle路径
