@@ -423,8 +423,13 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m
   然后在这几个文件的目录下执行命令：symbolicatecrash xx.crash xx.app.dSYM > new.crash
   
 ```
+    
      
-   
+ #### Flutter
+ ```dart
+ 将Stateless快速转为Stateful 快捷键
+ alt/Option + enter键
+ ```
 
 ## Link 
 - [Markdown指南中文版](https://www.markdown.xyz/basic-syntax/)
