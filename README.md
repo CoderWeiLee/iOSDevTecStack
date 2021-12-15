@@ -430,6 +430,9 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m
  将Stateless快速转为Stateful 快捷键
  alt/Option + enter键
  ```
+ ```dart
+  Android Studio代码格式化的快捷键command + alt + L
+ ```
 
 ## Link 
 - [Markdown指南中文版](https://www.markdown.xyz/basic-syntax/)
